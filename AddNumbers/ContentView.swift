@@ -6,17 +6,28 @@ struct ContentView: View {
     @State private var result = 0.0
 
     var body: some View {
-        TextField("Enter the first number", text: $firstNumber).keyboardType(.numberPad)
-        TextField("Enter the second number", text: $secondNumber).keyboardType(.decimalPad)
-        Button(action: {
-            if Double(firstNumber) != nil && Double(secondNumber) != nil {
-                self.result = Double(self.firstNumber)! + Double(self.secondNumber)!
+        VStack {
+            Text("Add Numbers").font(.title)
+            HStack {
+                TextField("Enter the first number", text: $firstNumber).keyboardType(.numberPad)
+                TextField("Enter the second number", text: $secondNumber).keyboardType(.decimalPad)
             }
-        })
-        {
-      Text("Add")
+
+            HStack {
+                Button(action: {
+                    if Double(firstNumber) != nil && Double(secondNumber) != nil {
+                        self.result = Double(self.firstNumber)! + Double(self.secondNumber)!
+                    }
+                })
+                {
+              Text("Add")
+                }
+            }
+
+            HStack {
+                Text("\(self.result)")
+            }
         }
-        Text("\(self.result)")
     }
 }
 
